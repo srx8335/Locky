@@ -1,0 +1,47 @@
+; Locky sample configuration
+; Copy this file to private/appconfig.ini and replace every placeholder
+; with values appropriate for your environment.
+
+[app]
+name        = Locky
+author      = Your Name
+description = Locky - Key management system
+keywords    = web2py, python, key management
+generator   = Web2py Web Framework
+production  = false
+toolbar     = false
+
+[host]
+names = localhost:*, 127.0.0.1:*, *:*, *
+
+[db]
+uri       = sqlite://storage.sqlite
+migrate   = true
+pool_size = 10
+
+[smtp]
+server = smtp.example.com:587
+sender = you@example.com
+login  = your-smtp-username
+tls    = true
+ssl    = false
+
+[scheduler]
+enabled   = true
+heartbeat = 1
+
+[google]
+analytics_id =
+
+[notifications]
+ntfy_topic = https://ntfy.sh/replace-with-a-private-topic
+
+[tally]
+form_url = https://tally.so/embed/replace-with-your-form-id
+
+[pusher]
+app_id  = replace-with-your-pusher-app-id
+key     = replace-with-your-pusher-key
+secret  = replace-with-your-pusher-secret
+cluster = eu
+ssl     = true
