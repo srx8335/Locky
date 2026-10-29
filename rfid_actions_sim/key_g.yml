@@ -1,0 +1,20 @@
+info:
+  name: key_g
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: 127.0.0.1:8000/Locky/default/get_nome_chave?id=777777777
+  params:
+    - name: id
+      value: "777777777"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
