@@ -1,0 +1,130 @@
+@import url('listar.css');
+
+
+
+.calendar{z-index:2000;position:relative;display:none;background:#fff;border:2px solid #000;font-size:11px;color:#000;cursor:default;font-family:Arial,Helvetica,sans-serif;
+border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}.calendar table{margin:0px;font-size:11px;color:#000;cursor:default;font-family:tahoma,verdana,sans-serif;}.calendar .button{text-align:center;padding:1px;color:#fff;background:#000;}.calendar .nav{background:#000;color:#fff}.calendar thead .title{font-weight:bold;padding:1px;background:#000;color:#fff;text-align:center;}.calendar thead .name{padding:2px;text-align:center;background:#bbb;}.calendar thead .weekend{color:#f00;}.calendar thead .hilite {background-color:#666;}.calendar thead .active{padding:2px 0 0 2px;background-color:#c4c0b8;}.calendar tbody .day{width:2em;text-align:right;padding:2px 4px 2px 2px;}.calendar tbody .day.othermonth{color:#aaa;}.calendar tbody .day.othermonth.oweekend{color:#faa;}.calendar table .wn{padding:2px 3px 2px 2px;background:#bbb;}.calendar tbody .rowhilite td{background:#ddd;}.calendar tbody td.hilite{background:#bbb;}.calendar tbody td.active{background:#bbb;}.calendar tbody td.selected{font-weight:bold;background:#ddd;}.calendar tbody td.weekend{color:#f00;}.calendar tbody td.today{font-weight:bold;color:#00f;}.calendar tbody .disabled{color:#999;}.calendar tbody .emptycell{visibility:hidden;}.calendar tbody .emptyrow{display:none;}.calendar tfoot .ttip{background:#bbb;padding:1px;background:#000;color:#fff;text-align:center;}.calendar tfoot .hilite{background:#ddd;}.calendar tfoot .active{}.calendar .combo{position:absolute;display:none;width:4em;top:0;left:0;cursor:default;background:#e4e0d8;padding:1px;z-index:2001;}.calendar .combo .label,.calendar .combo .label-IEfix{text-align:center;padding:1px;}.calendar .combo .label-IEfix{width:4em;}.calendar .combo .active{background:#c4c0b8;}.calendar .combo .hilite{background:#048;color:#fea;}.calendar td.time{padding:1px 0;text-align:center;background-color:#bbb;}.calendar td.time .hour,.calendar td.time .minute,.calendar td.time .ampm{padding:0 3px 0 4px;font-weight:bold;}.calendar td.time .ampm{text-align:center;}.calendar td.time .colon{padding:0 2px 0 3px;font-weight:bold;}.calendar td.time span.hilite{}.calendar td.time span.active{border-color:#f00;background-color:#000;color:#0f0;}.hour,.minute{font-size:2em;}
+
+#CP_hourcont{z-index:2000;padding:0;position:absolute;border:1px dashed #666;background-color:#eee;display:none;}#CP_minutecont{z-index:2000;background-color:#ddd;padding:1px;position:absolute;width:45px;display:none;}.floatleft{float:left;}.CP_hour{z-index:2000;padding:1px;font-family:Arial,Helvetica,sans-serif;font-size:9px;white-space:nowrap;cursor:pointer;width:35px;}.CP_minute{z-index:2000;padding:1px;font-family:Arial,Helvetica,sans-serif;font-size:9px;white-space:nowrap;cursor:pointer;width:auto;}.CP_over{background-color:#fff;z-index:2000}
+
+
+
+
+/* Popup. */
+/* Popup. */
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.popup-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Return popup buttons. */
+/* Botões do popup de devolução. */
+
+.btnFechar {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.closeInfo {
+  background-color: rgb(14, 182, 81);
+  color: white;
+}
+
+
+.btnFechar:hover {
+    background-color: rgb(10, 122, 55);
+    transform: scale(1.05);
+    transition: transform 0.4s ease;
+}
+
+.btnFechar:active {
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+}
+
+
+
+.fc-daygrid-event-dot{
+  DISPLAY: NONE;
+}
+
+.fc-event.aberto {
+    color: #e63946 !important; /* vermelho */
+    border-color: #a82828 !important;
+}
+
+
+.myclass{
+    background-color: white;
+
+}
+#calendar .fc-agenda-axis, #calendar .fc-widget-header {
+  background-color: #C2E6FF;
+  border-color: #AED0EA;
+  font-weight: normal;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+ 
+  border-radius: 3px ;
+}
+#calendar .fc-event {
+  box-shadow: 2px 2px 2px #706868;
+
+}
+.fc-today {
+   background-color: #C2E6FF;
+}
+.fc-day-number {
+    font-size: 14px;
+}
+.fc-content{
+    text-align:right ;
+    cursor:pointer;
+}
+.fc h2 {
+   font-size: 20px;
+}
+
+.fc-scroller {
+   overflow-y: hidden !important;
+}

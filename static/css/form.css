@@ -1,0 +1,119 @@
+.btnSubmit{
+    padding: 10px 20px;
+    background-color: #41045b;
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+ }
+.btnSubmit:hover {
+    background-color: #36034a;
+    transform: scale(1.05);
+}
+.btnSubmit:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+    animation: glitterClick 0.2s ease;
+}
+/* efeitos btn */
+@keyframes glitterClick {
+    0% {
+        box-shadow: 0 0 0px #9500ff, 0 0 0px #440254;
+        transform: scale(0.95);
+    }
+    50% {
+        box-shadow: 0 0 15px #9500ff, 0 0 25px #440254;
+    }
+    100% {
+        box-shadow: 0 0 0px #9500ff, 0 0 0px #440254;
+        transform: scale(1);
+    }
+}
+
+
+/* btn voltar */
+
+
+.btnVoltar {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #41045b;
+  color: white;
+  text-decoration: none;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.btnVoltar:hover {
+  background-color: #36034a;
+  color: white;
+  text-decoration: none;
+  animation: apontar 2s infinite alternate;
+}
+
+.btnVoltar:active {
+  animation: glitterClick 0.4s ease;
+}
+
+@keyframes apontar {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+#submit_record__row > .col-sm-9.col-sm-offset-3 {
+  margin-left: 0 !important; /* remove offset */
+  padding-left: 10px 20px !important; /* remove padding se existir */
+  width: auto; /* Let the div fit its content. */
+  /* Deixa o div ajustar-se ao conteúdo. */
+  display: none;;
+}
+
+
+
+select.autocomplete{
+  position: absolute;
+  z-index: 9999 !important;
+  color:#700B9C;
+  background-color: white;
+  border-radius: 8px;
+  appearance: none; /* Remove the default appearance. */
+  /* Remove a aparência predefinida. */
+  -webkit-appearance: none; /* Para navegadores Webkit */
+  -moz-appearance: none; /* Para navegadores Firefox */
+
+}
+
+#_autocomplete_chaveiro_descricao_chaveiro::-ms-expand {
+    display: none; /* Para o Internet Explorer */
+}
+
+#_autocomplete_chaveiro_descricao_chaveiro option:checked {
+    background-color: #41045b;
+    color: white;
+}
+
+
+
+
+
+
+div.form-group.row:not(#submit_record_row) {
+  width: 50%;
+}
+
+
+
+.botao-container > .btnSubmit {
+  margin-left: 10px;
+}
+
+
+
+
+.header{
+  margin-bottom: 30px !important;
+}

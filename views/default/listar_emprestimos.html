@@ -1,0 +1,211 @@
+{{extend 'plugin_adminlte/layout_starter.html'}}
+{{response.files.append(URL('static', 'css/listar.css'))}}
+
+
+<div class='header_listar'>
+      <h2>Listar Requisições</h2>
+      <a class="btnAdd" href="{{=URL('default', 'add_emprestimo')}}">Criar Requisição</a>
+</div><button id="btnDevolverSelecionados" class="btnDev">Devolver Selecionados</button>
+
+
+<div class="smartgrid-wrapper container mt-5 mb-5">
+    {{=grid}}
+</div>
+
+
+  <div id="popupConfirm" class="popup-overlay">
+  <div class="popup-content">
+    <p>⚠️ Tens a certeza que queres eliminar este emprestimo?</p>
+    <button id="confirmDelete" class="btnDelete">Sim</button>
+    <button id="cancelDelete" class="btnCancel">Cancelar</button>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- pop up Devolver -->
+<div id="popupDev" class="popup-overlay">
+  <div class="popup-content">
+    <p>⚠️ Tem a certeza de que quer devolver estes Empréstimos?</p>
+    
+    <!-- Text box for the name. -->
+    <!-- Caixa de texto para o nome. -->
+    <label for="nomeDevolucao">Nome do Colaborador:</label>
+    <input type="text" id="nomeDevolucao" placeholder="Passe o cartão ou escreva o nome">
+    
+    <button id="confirmDev" class="btnDev">Devolver</button>
+    <button id="cancelDev" class="btnCancelDev">Cancelar</button>
+  </div>
+</div>
+
+
+
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+<script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+
+
+
+
+
+{{block page_js}}
+<!-- Open the popup when the delete action is clicked. -->
+<!-- Abre o popup quando a ação de apagar é clicada. -->
+
+<script>
+  let deleteUrl = ""; // Variable used to store the URL.
+  // Variável usada para armazenar o URL.
+
+  $(document).ready(function(){ //Esperar que o docuemnto esteja pronto
+    // Quando clicas em "Excluir"
+    $(".apagar_emp").click(function(e){ 
+      e.preventDefault(); // Prevent the link's default behavior.
+      // Impede o comportamento predefinido do link.
+      deleteUrl = $(this).attr('href'); // Store the URL for the later redirect.
+      // Guarda o URL para o redirecionamento posterior.
+      $("#popupConfirm")
+        .fadeIn(400) //Mostra o popup
+        .css("display", "flex");
+        
+    });
+
+    $("#cancelDelete").click(function(){  //ao Clicar em cancelar
+      console.log("Cancelamento do popup acionado");
+      $("#popupConfirm").fadeOut(200); //Esconde o popup
+      deleteUrl = ""; //Limpa a variavel do URL 
+    });
+
+    $("#confirmDelete").click(function(){ //ao clicar em confirmar
+      if (deleteUrl) { // Check whether the URL variable has a value.
+        // Verifica se a variável do URL tem um valor.
+        window.location.href = deleteUrl; // Redirect to the URL.
+        // Redireciona para o URL.
+      }
+    });
+  });
+</script>
+
+
+
+<script>
+$(document).ready(function(){
+    let ids = []; // Array of IDs to send to the server.
+    // Array de IDs para enviar ao servidor.
+
+    // Bulk flow.
+    // Fluxo múltiplo.
+    $("#btnDevolverSelecionados").click(function(e){
+        e.preventDefault();
+        ids = [];
+        $("input[name='selecionados']:checked").each(function(){
+            ids.push($(this).val());
+        });
+        if(ids.length === 0){
+            alert("⚠️ Nenhum empréstimo selecionado!");
+            return;
+        }
+        $("#nomeDevolucao").val('');
+        $("#popupDev").fadeIn(400).css("display","flex");
+    });
+
+    // Fluxo individual
+    $(".devolver_emprestimo").click(function(e){
+        e.preventDefault();
+        ids = [$(this).data("id")]; // sempre em array
+        $("#nomeDevolucao").val('');
+        $("#popupDev").fadeIn(400).css("display","flex");
+    });
+
+    // Cancelar
+    $("#cancelDev").click(function(){
+        $("#popupDev").fadeOut(200);
+        ids = [];
+    });
+
+    // Confirmar
+    $("#confirmDev").click(function(){
+        let nome = $("#nomeDevolucao").val().trim();
+        if(!nome){
+            alert("⚠️ Por favor, introduza o nome ou passe o cartão!");
+            return;
+        }
+
+        if(ids.length === 0){
+            alert("⚠️ Nenhum empréstimo selecionado!");
+            return;
+        }
+
+        // AJAX call for one or multiple items.
+        // Chamada AJAX para um ou vários itens.
+        $.post("{{=URL('default', 'devolver_selecionados')}}", {
+            'ids[]': ids,
+            nome: nome
+        }, function(res){
+            location.reload();
+        });
+    });
+});
+</script>
+
+<!-- <script>
+
+  const modal = document.getElementById("popupDev");
+  const campoColaborador = document.getElementById("nomeDevolucao");
+  // Inicializar Pusher
+  var pusher = new Pusher('{{=locky_pusher_key}}', {
+    cluster: '{{=locky_pusher_cluster}}'
+  });
+
+  var canal = pusher.subscribe('chaveiro');
+
+
+  canal.bind('colaborador', function(data) {
+      console.log("Recebido do Pusher:", data);
+      colab = data.colaborador;
+      campoColaborador.value = "teste123123";
+
+    });
+
+
+
+</script> -->
+
+<script>
+  $(document).ready(function() {
+  var pusher = new Pusher('{{=locky_pusher_key}}', {
+    cluster: '{{=locky_pusher_cluster}}'
+  });
+
+  var canal = pusher.subscribe('chaveiro');
+
+  const modal = document.getElementById("popupDev");
+  console.log("Modal:", modal);
+  const campoColaborador = document.getElementById("nomeDevolucao");
+  console.log("Campo Colaborador:", campoColaborador);
+
+
+  canal.bind('colaborador', function(data) {
+    console.log("Recebido do Pusher:", data);
+    const colaborador = data.colaborador;
+    console.log("Colaborador:", colaborador);
+    if (modal.style.display != "none") {
+      campoColaborador.value = colaborador.nome;
+      console.log("Campo Colaborador.value:", campoColaborador.value);
+    } else {
+      console.log("Modal não está aberto, não preencher o campo.");
+    }
+  });
+
+  });
+</script>
+
+
+
+
+{{end}}

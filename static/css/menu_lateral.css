@@ -1,0 +1,58 @@
+.web2py-menu-vertical li > a {
+    color: rgb(112, 11, 156) !important; /* Normal submenu color. */
+    /* Cor normal do submenu. */
+    font-size: 14px;
+}
+.web2py-menu-expand > a,
+.web2py-menu-last > a {
+    color: rgb(77, 6, 108) ; /* Normal parent menu color. */
+    /* Cor normal do menu pai. */
+    font-size: 15px;
+}
+
+/* Active submenu (child). */
+/* Submenu ativo (filho). */
+.web2py-menu-vertical li.web2py-menu-active > a {
+    color: rgb(87, 7, 121) !important;
+    font-weight: bold !important;
+}
+
+/* Active parent menu. */
+/* Menu pai ativo. */
+.web2py-menu-expand.web2py-menu-active > a,
+.web2py-menu-last.web2py-menu-active > a {
+    color: rgb(97, 70, 108) !important;
+    font-weight: bold !important;
+}
+
+
+
+
+
+
+
+.web2py-menu-vertical li{
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+/* Position the special link at the bottom of the sidebar. */
+/* Posiciona o link especial no fundo da barra lateral. */
+.sidebar-menu > li > a[href$="/default/formulario"] {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 230px; /* Width of the standard AdminLTE sidebar. */
+    /* Largura da barra lateral normal do AdminLTE. */
+    text-align: center;
+    color: rgb(112, 11, 156);
+    padding: 10px 5px;
+    z-index: 9999;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}

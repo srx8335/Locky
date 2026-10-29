@@ -1,0 +1,31 @@
+{{extend 'plugin_adminlte/layout_starter.html'}}
+
+<div class="title mt-5">
+  <h2>🔐 Locky - Sistema de Gestão de Requisições de Chaves</h2>
+</div>
+
+
+<div class="container mt-5">
+  <div class="card-row">
+    <div class="card">
+      <h4>🔐 Requisições</h4>
+      <p>Gere todos os pedidos e devoluções de chaves.</p>
+      <a href="{{=URL('default', 'listar_emprestimos')}}" class="btn btn-outline-listar">📋 Listar</a>
+      <a href="{{=URL('default', 'add_emprestimo')}}" class="btn btn-outline-novo">➕ Novo</a>
+    </div>
+
+    <!-- <div class="card">
+      <h4>🧑‍💼 Empregados</h4>
+      <p>Regista e consulta os dados dos empregados.</p>
+      <a href="{{=URL('default', 'listar_empregados')}}" class="btn btn-outline-listar">📋 Listar</a>
+      <a href="{{=URL('default', 'add_empregado')}}" class="btn btn-outline-novo">➕ Novo</a>
+    </div> -->
+
+    <div class="card">
+      <h4>🗝️ Chaveiros</h4>
+      <p>Adicione e organize os chaveiros disponíveis.</p>
+      <a href="{{=URL('default', 'listar_chaveiros')}}" class="btn btn-outline-listar">📋 Listar</a>
+      <a href="{{=URL('default', 'add_chaveiro')}}" class="btn btn-outline-novo">➕ Novo</a>
+    </div>
+  </div>
+</div>

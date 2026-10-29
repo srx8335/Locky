@@ -1,0 +1,11 @@
+{{extend 'plugin_adminlte/layout_starter.html'}}
+{{response.files.append(URL('static', 'css/form.css'))}}
+
+<h2>Adicionar Chaveiro</h2>
+<BR>
+
+{{ if chaveiro: }}
+  <p><strong>ID atribuído:</strong> {{=chaveiro.id}}</p>
+{{ pass }}
+
+{{=form}}

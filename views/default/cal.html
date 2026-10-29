@@ -1,0 +1,120 @@
+{{extend 'plugin_adminlte/layout_starter.html'}}
+
+
+
+<script>
+    const urlBaseDevolucao = "{{=URL('default', 'fechar_emprestimo_cal')}}";
+</script>
+
+
+
+
+<div id="popupInfo" class="popup-overlay">
+  <div class="popup-content">
+    <!-- Content generated dynamically by JavaScript. -->
+    <!-- Conteúdo gerado dinamicamente por JavaScript. -->
+     <button id="openConfirmPopup">Devolver</button>
+    <button id="closeInfo">Fechar</button>
+  </div>
+</div>
+
+<div id="popupDev" class="popup-overlay" style="display:none;">
+  <div class="popup-content">
+    <p>⚠️ Tem a certeza de que quer devolver esta Requisição?</p>
+    <button id="confirmDev" class="btnDev">Devolver</button>
+    <button id="cancelDev" class="btnCancelDev">Cancelar</button>
+  </div>
+</div>
+
+
+
+
+
+    <div id='calendar'></div>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'pt',
+                events: '{{=URL("default", "eventos")}}',
+                eventTimeFormat: { // <-- add this
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            },
+
+                eventClick: function(info) {
+    const e = info.event;
+    const conteudo = `
+        <p><strong>ID do Chaveiro:</strong> ${e.extendedProps.chave_id}</p>
+        <p><strong>Designação do Chaveiro:</strong> ${e.extendedProps.chave_desc}</p>
+        <p><strong>Requisitado por:</strong> ${e.extendedProps.empregado}</p>
+        <p><strong>Data de Requisição:</strong> ${e.extendedProps.data_req}</p>
+        <p><strong>Devolvido por:</strong> ${e.extendedProps.nome_devolucao}</p>
+        <p><strong>Data de Devolução:</strong> ${e.extendedProps.data_dev}</p>
+    `;
+    let html = conteudo;
+    if (!e.end || e.end === null) {
+        html += `<button id="btndevolver" class="btnDev">Devolver</button>`;
+    }
+    html += `<button id="closeInfo" class="btnCancelDev">Fechar</button>`;
+    document.querySelector("#popupInfo .popup-content").innerHTML = html;
+    $("#popupInfo").fadeIn(400).css("display", "flex");
+
+    // Close the modal when the "Close" button is clicked.
+    // Fecha o modal quando o botão "Fechar" é clicado.
+    document.getElementById("closeInfo").onclick = function () {
+        $("#popupInfo").fadeOut(200);
+    };
+
+    // Add an event handler to the return button, if present.
+    // Adiciona um evento ao botão de devolução, se existir.
+    const btnDev = document.getElementById("btndevolver");
+    if (btnDev) {
+        btnDev.onclick = function() {
+            $("#popupInfo").fadeOut(200);
+            $("#popupDev").fadeIn(400).css("display", "flex");
+
+            // Confirm the return.
+            // Confirma a devolução.
+            document.getElementById("confirmDev").onclick = function() {
+                const redirectTo = urlBaseDevolucao + "/" + e.extendedProps.id_emprestimo;
+      // Redirect to the constructed URL
+      window.location.href = redirectTo;
+            };
+            // Cancel the return.
+            // Cancela a devolução.
+            document.getElementById("cancelDev").onclick = function() {
+                $("#popupDev").fadeOut(200);
+            };
+        };
+    }
+},
+
+eventDidMount: function(info) {
+    // Apply styling to the row below.
+    // Aplica o estilo à linha abaixo.
+    if (info.view.type === 'dayGridMonth') {
+        const timeEl = info.el.querySelector('.fc-event-time');
+        const titleEl = info.el.querySelector('.fc-event-title');
+
+        if (timeEl && titleEl) {
+            timeEl.textContent = timeEl.textContent.replace(':', 'h');
+            timeEl.style.display = 'block';
+            titleEl.style.display = 'block';
+        }
+    }},
+});
+
+        calendar.render();
+    });
+
+</script>

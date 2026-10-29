@@ -1,0 +1,109 @@
+
+/* Container */
+.container {
+  max-width: 1200px;
+  min-height: 75vh; /* Full viewport height */
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical centering */
+  align-items: center;     /* Horizontal centering */
+}
+
+/* Title. */
+/* Título. */
+.title {
+  font-size: 30;
+  /* margin-bottom: 3rem; */
+  text-align: center;
+}
+
+/* Flex row for the cards. */
+/* Linha flexível para os cartões. */
+.card-row {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+
+/* Cards. */
+/* Cartões. */
+.card {
+  border-radius: 0.4rem;
+  padding: 1.5rem 1rem 2rem;
+  flex: 1 1 300px; /* 300px base size, growing to fill available space. */
+  /* Tamanho base de 300px, crescendo até preencher o espaço disponível. */
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Card header. */
+/* Cabeçalho dos cartões. */
+.card h4 {
+  margin-bottom: 1rem;
+  font-size: 25px;
+}
+
+/* Texto */
+.card p {
+  margin-bottom: 2rem;
+  color: #555;
+  font-size: 15px;
+}
+
+/* Buttons. */
+/* Botões. */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 0.4rem 0;
+  margin-bottom: 0.6rem;
+  border-radius: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Outline buttons. */
+/* Botões outline. */
+.btn-outline-listar {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-outline-listar:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-outline-novo {
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-outline-novo:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card-row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}

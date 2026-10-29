@@ -1,0 +1,40 @@
+{{extend 'plugin_adminlte/layout_starter.html'}}
+{{response.files.append(URL('static', 'css/listar.css'))}}
+
+
+<div class='header_listar'>
+      <h2>Feedback dos Utilizadores</h2>
+</div>
+
+
+<div class="smartgrid-wrapper container mt-5 mb-5">
+    {{=grid}}
+</div>
+
+
+
+
+{{block page_js}}
+<!-- Add text to the table header. -->
+<!-- Adiciona texto ao cabeçalho da tabela. -->
+
+<script>
+  let tries = 0;
+  const maxTries = 10;
+
+  const intervalId = setInterval(() => {
+    const ths = document.querySelectorAll('table thead tr th');
+    if (ths.length >= 11) {
+      ths[12].textContent = 'Ações';
+      clearInterval(intervalId);
+      console.log('Cabeçalho alterado com sucesso');
+    }
+    tries++;
+    if (tries > maxTries) {
+      clearInterval(intervalId);
+      console.log('Falhou alterar o cabeçalho');
+    }
+  }, 20); // tenta a cada 200ms
+</script>
+  
+{{end}}

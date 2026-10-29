@@ -1,0 +1,84 @@
+{{extend 'plugin_adminlte/layout_starter.html'}}
+{{response.files.append(URL('static', 'css/form.css'))}}
+
+<h2>Adicionar Requisição</h2>
+
+<BR>
+
+{{=form}}
+
+
+
+
+
+{{block page_js}}
+
+<script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+
+<!-- <script>
+  var pusher = new Pusher('{{=locky_pusher_key}}', {
+    cluster: '{{=locky_pusher_cluster}}'
+  });
+
+  var canal = pusher.subscribe('chaveiro');
+  canal.bind('chave', function(data) {
+    console.log("Recebido do pusher:", data);
+    document.getElementById("emprestimo_id_chaveiro").value = data.chaveiro;
+  });
+</script> -->
+
+
+
+
+<script>
+  var pusher = new Pusher('{{=locky_pusher_key}}', {
+    cluster: '{{=locky_pusher_cluster}}'
+  });
+
+  var canal = pusher.subscribe('chaveiro');
+
+  var campoColaborador = document.getElementById("emprestimo_nome_empregado");
+  var campoGrupoColab = document.getElementById("grupo_colaborador");
+  var campoChaveHidden = document.querySelector('input[name="id_chaveiro"]'); // This is the form's actual field.
+  // Este é o campo verdadeiro do formulário.
+  var campoChave = document.getElementById("emprestimo_id_chaveiro");
+
+  function verificarESubmeter() {
+    if (campoColaborador.value && campoChaveHidden.value && campoGrupoColab.value) {
+      console.log("Todos os campos preenchidos. A submeter...");
+      document.querySelector("form").submit();
+    } else {
+      console.log("À espera de mais dados:", campoColaborador.value, campoChaveHidden.value);
+    }
+  }
+
+  canal.bind('colaborador', function(data) {
+    console.log("Recebido do Pusher:", data);
+    const colaborador = data.colaborador;
+  campoColaborador.value = colaborador.nome;
+  campoGrupoColab.value = colaborador.grupo;
+    verificarESubmeter();
+  });
+
+  canal.bind('chave', function(data) {
+    console.log("Chave recebida:", data);
+
+    // Definir o valor no campo HIDDEN (real)
+    campoChaveHidden.value = data.chave;
+
+    // Update the autocomplete visually so the user can see the selection.
+    // Atualiza visualmente o autocomplete para o utilizador ver a seleção.
+    campoChave.value = data.chave;
+
+    verificarESubmeter();
+  });
+</script>
+
+
+
+
+
+
+
+
+{{end}}

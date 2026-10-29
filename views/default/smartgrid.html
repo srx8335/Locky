@@ -1,0 +1,96 @@
+{{extend 'plugin_adminlte/layout_starter.html'}}
+{{response.files.append(URL('static', 'css/listar.css'))}}
+
+
+<div class='header_listar'>
+      <h2>Listar Empregados</h2>
+      <a class="btnAdd" href="{{=URL('default', 'add_chaveiro')}}">Adicionar Chaveiro</a>
+</div>
+
+
+<div class="smartgrid-wrapper container mt-5 mb-5">
+    {{=grid}}
+</div>
+
+
+  <div id="popupConfirm" class="popup-overlay">
+  <div class="popup-content">
+    <p>⚠️ Tens a certeza que queres eliminar este Chaveiro?</p>
+    <button id="confirmDelete" class="btnDelete">Sim</button>
+    <button id="cancelDelete" class="btnCancel">Cancelar</button>
+  </div>
+</div>    
+
+
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+{{block page_js}}
+<!-- Open the popup when the delete action is clicked. -->
+<!-- Abre o popup quando a ação de apagar é clicada. -->
+
+<script>
+  let deleteUrl = ""; // Variable used to store the URL.
+  // Variável usada para armazenar o URL.
+
+  $(document).ready(function(){ //Esperar que o docuemnto esteja pronto
+    // Quando clicas em "Excluir"
+    $(".apagar").click(function(e){ 
+      e.preventDefault(); // Prevent the link's default behavior.
+      // Impede o comportamento predefinido do link.
+      deleteUrl = $(this).attr('href'); // Store the URL for the later redirect.
+      // Guarda o URL para o redirecionamento posterior.
+      $("#popupConfirm")
+        .fadeIn(400) //Mostra o popup
+        .css("display", "flex");
+        
+    });
+
+    $("#cancelDelete").click(function(){  //ao Clicar em cancelar
+      $("#popupConfirm").fadeOut(200); //Esconde o popup
+      deleteUrl = ""; //Limpa a variavel do URL 
+    });
+
+    $("#confirmDelete").click(function(){ //ao clicar em confirmar
+      if (deleteUrl) { // Check whether the URL variable has a value.
+        // Verifica se a variável do URL tem um valor.
+        window.location.href = deleteUrl; // Redirect to the URL.
+        // Redireciona para o URL.
+      }
+    });
+  });
+</script>
+
+
+
+<!-- Add text to the table header. -->
+<!-- Adiciona texto ao cabeçalho da tabela. -->
+
+<script>
+  let tries = 0;
+  const maxTries = 10;
+
+  const intervalId = setInterval(() => {
+    const ths = document.querySelectorAll('table thead tr th');
+    if (ths.length >= 3) {
+      ths[2].textContent = 'Ações';
+      clearInterval(intervalId);
+      console.log('Cabeçalho alterado com sucesso');
+    }
+    tries++;
+    if (tries > maxTries) {
+      clearInterval(intervalId);
+      console.log('Falhou alterar o cabeçalho');
+    }
+  }, 20); // tenta a cada 200ms
+</script>
+
+{{end}}

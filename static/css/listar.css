@@ -1,0 +1,525 @@
+.header_listar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spacing between the header and search. */
+    /* Espaçamento entre o cabeçalho e a pesquisa. */
+}
+
+
+/* Table. */
+/* Tabela. */
+
+.web2py_htmltable table {
+
+    width: 100% !important;
+    margin-top: 20px; 
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.smartgrid-wrapper th, 
+.smartgrid-wrapper td {
+    white-space: normal !important;
+}
+
+.separador {
+    color: inherit;        /* Inherit the normal text color. */
+    /* Herda a cor normal do texto. */
+    text-decoration: none; /* Remove the underline. */
+    /* Remove o sublinhado. */
+    cursor: default;       /* Use the default cursor, not a link cursor. */
+    /* Usa o cursor predefinido, não o cursor de link. */
+}
+
+td a.btn_edit_emp,
+td a.devolver_emprestimo_emp,
+td a.apagar_emp {
+    display: block; /* Each link occupies one line. */
+    /* Cada link ocupa uma linha. */
+    margin-bottom: 4px; /* Space between links. */
+    /* Espaço entre os links. */
+    text-align: left;
+}
+
+input[type=checkbox]{
+      margin-left: 30%;
+}
+
+.smartgrid-wrapper th{
+    border-bottom: 2px solid rgb(80, 80, 80);
+    padding: 8px;
+}
+
+.smartgrid-wrapper td{
+    border-bottom: 1px solid rgb(80, 80, 80);
+    padding: 8px;
+}
+
+/* .web2py_counter, */
+.web2py_breadcrumbs {
+    display: none !important; /* Hide the counter and breadcrumbs. */
+    /* Esconde o contador e os breadcrumbs. */
+}
+
+.smartgrid-wrapper{
+  width: 100% !important;
+}
+
+
+/* Search bar. */
+/* Barra de pesquisa. */
+.smartgrid-wrapper .form-control {
+    border-radius: 10px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    max-width: 250px;
+}
+
+
+
+
+
+
+/* Search and clear buttons. */
+/* Botões de pesquisa e limpeza. */
+.web2py_console .btn-secondary{
+    padding: 10px 20px;
+    
+    background-color: rgb(65, 4, 91);
+    color: #ffffff;
+    
+    border: none;
+    border-radius: 15px;
+    
+    text-decoration: none;
+    
+    cursor: pointer;
+    
+    transition: all 0.3s ease;
+    transform: scale(0.95);
+    
+    margin-top: 12px !important;
+    margin-bottom: 12px !important;
+    margin-right: 8px !important;
+
+}
+
+
+.web2py_console .btn-secondary:hover {
+    background-color: #36034a;
+    transform: scale(1.1);
+}
+
+
+
+.web2py_console .btn-secondary:active {
+    transform: scale(0.90);
+    transition: transform 0.1s ease;
+    animation: glitterClick 0.4s ease;
+}
+
+
+
+
+
+
+
+
+
+
+.btn-default:not(.btn-secondary){
+    padding: 10px 20px;
+    
+    background-color: #494b4b;
+    color: #ffffff;
+    
+    border: none;
+    border-radius: 15px;
+    
+    text-decoration: none;
+    
+    cursor: pointer;
+    
+    transition: all 0.3s ease;
+    transform: scale(0.95);
+
+    margin-bottom: 10px;
+    margin-right: 8px;
+}
+
+
+.btn-default:not(.btn-secondary):hover {
+    background-color: #373c3f;
+    transform: scale(1.1);
+}
+
+
+.btn-default:not(.btn-secondary):active {
+    transform: scale(0.90);
+    transition: transform 0.1s ease;
+    animation: glitterClickGrey 0.4s ease;
+}
+
+
+/* efeitos btn */
+@keyframes glitterClickGrey {
+    0% {
+        box-shadow: 0 0 0px #C0C0C0, 0 0 0px #D3D3D3, 0 0 0px #A9A9A9, 0 0 0px #696969, 0 0 0px #F5F5F5, 0 0 0px #B0C4DE, 0 0 0px #2F2F2F;
+        transform: scale(0.95);
+    }
+    50% {
+        box-shadow: 0 0 15px #C0C0C0, 0 0 25px #D3D3D3, 0 0 30px #A9A9A9, 0 0 15px #696969ca, 0 0 25px #f5f5f5ca, 0 0 30px #b0c4deca, 0 0 10px #2f2f2fb2;
+    }
+    100% {
+        box-shadow: 0 0 0px #C0C0C0, 0 0 0px #D3D3D3, 0 0 0px #D3D3D3, 0 0 0px #D3D3D3, 0 0 0px #D3D3D3, 0 0 0px #D3D3D3, 0 0 0px #D3D3D3;
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+
+
+
+/* Pagination. */
+/* Paginação. */
+
+.web2py_paginator {
+  margin-top: 20px !important;
+  text-align: center !important;
+}
+
+.web2py_paginator ul {
+  list-style: none !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  gap: 10px !important;
+}
+
+.web2py_paginator li {
+  display: inline !important;
+}
+
+.web2py_paginator li a {
+  text-decoration: none !important;
+  padding: 6px 12px !important;
+  color: #333 !important;
+  border-radius: 6px !important;
+  transition: 0.3s !important;
+}
+
+.web2py_paginator li a:hover {
+  background-color: #f0f0f0 !important;
+  color: rgb(65, 4, 91) !important;
+}
+
+.web2py_paginator li.current a {
+  border-bottom: 2px solid rgb(65, 4, 91) !important;
+  font-weight: bold !important;
+  color: rgb(65, 4, 91) !important;
+  cursor: default !important;
+}
+
+
+
+
+
+
+
+
+
+/* 1. Add spacing around the entire SmartGrid wrapper. */
+/* 1. Adiciona espaçamento em torno de todo o wrapper do SmartGrid. */
+.smartgrid-wrapper {
+  padding: 2rem;           /* General inner spacing. */
+  /* Espaçamento interno geral. */
+  margin: 2rem auto;       /* Separation from the remaining content. */
+  /* Separação do restante conteúdo. */
+  max-width: 1200px;       /* Comfortable width. */
+  /* Largura confortável. */
+}
+
+/* 2. Space between the search bar and filters. */
+/* 2. Espaço entre a barra de pesquisa e os filtros. */
+.web2py_console {
+  /* display: flex;
+  flex-wrap: wrap; */
+  gap: 1rem;               /* Space between each field (search + filters). */
+  /* Espaço entre cada campo (pesquisa + filtros). */
+  margin-bottom: 80px;   /* Separate the query row from the table. */
+  /* Separa a linha de consulta da tabela. */
+}
+
+/* 3. Roomier search box. */
+/* 3. Caixa de pesquisa mais espaçosa. */
+.w2p_query_row .web2py_search input[type="text"] {
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+#w2p_value_empregado-id,
+#w2p_value_empregado-nome_empregado{
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* botoes btn btns */
+#btnDevolverSelecionados{
+    float: right;
+    margin-right: -0.2%;
+}
+
+
+
+
+
+
+.btnAdd {
+    padding: 10px 20px;
+    background-color: rgb(65, 4, 91);
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(1.05);
+}
+.btnAdd:hover {
+    background-color: #36034a;
+    transform: scale(1.1);
+}
+.btnAdd:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+    animation: glitterClick 0.4s ease;
+}
+/* efeitos btn */
+@keyframes glitterClick {
+    0% {
+        box-shadow: 0 0 0px #9500ff, 0 0 0px #440254;
+        transform: scale(0.95);
+    }
+    50% {
+        box-shadow: 0 0 15px #9500ff, 0 0 25px #440254;
+    }
+    100% {
+        box-shadow: 0 0 0px #9500ff, 0 0 0px #440254;
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+
+/* Slide effect for table data. */
+/* Efeito de slide nos dados da tabela. */
+
+@keyframes slideIn {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.slide-in td {
+  animation: slideIn 0.5s ease forwards;
+}
+
+/* Popup. */
+/* Popup. */
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.popup-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Return popup buttons. */
+/* Botões do popup de devolução. */
+
+.btnDev, .btnCancelDev {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnDev {
+  background-color: rgb(14, 182, 81);
+  color: white;
+}
+
+
+.btnDev:hover {
+    background-color: rgb(10, 122, 55);
+    transform: scale(1.05);
+    transition: transform 0.4s ease;
+}
+
+.btnDev:active {
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+}
+
+
+
+
+
+
+
+.btnCancelDev {
+  background-color: #ccc;
+  color: black;
+  position: relative;
+  overflow: visible;
+}
+
+.btnCancelDev:hover {
+    background-color: #8b8b8b;
+    transform: scale(1.05);
+    transition: transform 0.4s ease;
+}
+
+.btnCancelDev:active {
+  transform: scale(0.95);
+    transition: transform 0.2s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Delete popup buttons. */
+/* Botões do popup de eliminação. */
+
+.btnDelete, .btnCancel {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnDelete {
+  background-color: red;
+  color: white;
+}
+
+.btnDelete:hover {
+    background-color: rgb(111, 10, 30);
+    transform: scale(1.05);
+    transition: transform 0.4s ease;
+}
+
+.btnDelete:active {
+  transform: scale(0.95);
+    transition: transform 0.2s ease;
+}
+
+
+
+
+
+.btnCancel {
+  background-color: #ccc;
+  color: black;
+  position: relative;
+  overflow: visible;
+}
+
+.btnCancel:hover {
+    background-color: #8b8b8b;
+    transform: scale(1.05);
+    transition: transform 0.4s ease;
+}
+
+.btnCancel:active {
+  transform: scale(0.95);
+    transition: transform 0.2s ease;
+}
+
+
+
+
+
+.requisitado {
+    color: red;
+    font-weight: bold;
+}
