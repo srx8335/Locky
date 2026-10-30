@@ -6,7 +6,7 @@
 
 import requests
 import os
-from applications.Locky.private import pusher_client
+from applications.Locky.private.pusher_client import pusher_client
 from applications.Locky.private import acessos
 from gluon import *
 from gluon import current
